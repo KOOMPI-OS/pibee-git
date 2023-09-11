@@ -244,13 +244,15 @@ def inst_setup_base(config):
         ['bash', '-c', 'echo \'COMPRESSION="zstd"\' >> /etc/mkinitcpio.conf'])
     # Generate fstab
     exec(['bash', '-c', 'genfstab -U /mnt > /mnt/etc/fstab'])
+    # copy linux-zen
+    exec(['bash', '-c', 'cp /usr/lib/modules/*zen/vmlinuz /mnt/boot/vmlinuz-linux-zen'])
     # Refresh package lists, pacman-key --init
     exec_chroot(['pacman-key', '--init'])
     exec_chroot(['pacman-key', '--populate', 'archlinux'])
     # Install linux-zen
     #exec_chroot(['pacman', '-Sy', '--noconfirm', 'linux-zen', 'xorriso'])
     # cp linux-zen image
-    exec_chroot(['cp', '/usr/lib/modules/*zen', '/boot/vmlinuz-linux-zen'])
+    #exec_chroot(['cp', '/usr/lib/modules/*zen', '/boot/vmlinuz-linux-zen'])
     # generate linux-zen image
     exec_chroot(['mkinitcpio', '-p', 'linux-zen'])
     # Remove jade-gui and pibee
