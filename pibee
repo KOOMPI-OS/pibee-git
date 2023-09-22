@@ -256,7 +256,7 @@ def inst_setup_base(config):
     # generate linux-zen image
     exec_chroot(['mkinitcpio', '-p', 'linux-zen'])
     # Remove jade-gui and pibee
-    exec_chroot(['pacman', '-Rn', '--noconfirm', 'jade-gui', 'pibee-git'])
+    exec_chroot(['/usr/bin/pacman', '-Rn', '--noconfirm', 'jade-gui', 'pibee-git'])
 
 
 def inst_bootloader(config):
