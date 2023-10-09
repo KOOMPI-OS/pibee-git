@@ -374,6 +374,14 @@ def inst_users(config):
     exec_chroot(['sudo', '-u', user['name'], 'mkdir', '-p',
                 f'/home/{user["name"]}/.local/share/applications'])
 
+    # Create ~/.config/autostart
+    exec_chroot(['sudo', '-u', user['name'], 'mkdir', '-p',
+                f'/home/{user["name"]}/.config/autostart'])
+
+    # Copy desktop from /usr/share/applications/org.koompios.FirstSetup.desktop to ~/.config/autostart
+    exec_chroot(['sudo', '-u', user['name'], 'cp', '/usr/share/applications/org.koompios.FirstSetup.desktop',
+                f'/home/{user["name"]}/.config/autostart'])
+
 
 ########################################################################################
 
