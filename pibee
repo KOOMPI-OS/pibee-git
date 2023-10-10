@@ -344,6 +344,11 @@ def inst_users(config):
         ['bash', '-c', 'echo "Defaults pwfeedback" >> /etc/sudoers']
     )
 
+    # Create Swapfile
+    exec_chroot(
+        ['bash', '-c', 'create-swap']
+    )
+
     # Add users
     for user in config['users']:
         if user['name'] == 'koompi':
