@@ -258,6 +258,11 @@ def inst_setup_base(config):
     # Remove jade-gui and pibee
     exec_chroot(['/usr/bin/pacman', '-Rn', '--noconfirm', 'jade-gui', 'pibee-git'])
 
+    # Create Swapfile
+    exec_chroot(
+        ['bash', '-c', '/usr/local/bin/create-swap']
+    )
+
 
 def inst_bootloader(config):
     # Install bootloader
@@ -379,14 +384,10 @@ def inst_users(config):
                 f'/home/{user["name"]}/.config/autostart'])
 
     # Copy desktop from /usr/share/applications/org.koompios.FirstSetup.desktop to ~/.config/autostart
-    exec_chroot(['sudo', '-u', user['name'], 'cp', '/usr/local/share/applations/org.koompios.FirstSetup.desktop',
-                f'/home/{user["name"]}/.config/autostart'])
+    #exec_chroot(['sudo', '-u', user['name'], 'cp', '/usr/local/share/applations/org.koompios.FirstSetup.desktop',
+    #            f'/home/{user["name"]}/.config/autostart'])
 
 
-    # Create Swapfile
-    exec_chroot(
-        ['bash', '-c', '/usr/local/bin/create-swap']
-    )
 
 ########################################################################################
 
