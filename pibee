@@ -260,7 +260,7 @@ def inst_setup_base(config):
 
     # Create Swapfile
     exec_chroot(
-        ['bash', '-c', '/usr/local/bin/create-swap']
+        ['bash', '/usr/local/bin/create-swap']
     )
 
 
