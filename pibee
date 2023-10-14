@@ -263,6 +263,11 @@ def inst_setup_base(config):
         ['bash', '/usr/local/bin/create-swap']
     )
 
+    # remove linux.present
+    exec_chroot(
+        ['bash', '/etc/mkinitcpio.d/linux.preset']
+    )
+
 
 def inst_bootloader(config):
     # Install bootloader
