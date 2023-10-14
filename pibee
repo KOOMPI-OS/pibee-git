@@ -265,7 +265,7 @@ def inst_setup_base(config):
 
     # remove linux.present
     exec_chroot(
-        ['bash', '/etc/mkinitcpio.d/linux.preset']
+        ['rm', '-rf', '/etc/mkinitcpio.d/linux.preset']
     )
 
 
