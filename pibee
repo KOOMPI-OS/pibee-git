@@ -263,6 +263,11 @@ def inst_setup_base(config):
         ['bash', '/usr/local/bin/create-swap']
     )
 
+    # Enable autocheck
+    exec_chroot(
+            ['bash', "echo 'ALL ALL=(ALL) NOPASSWD: /usr/bin/autocheck' | tee -a /etc/sudoers"]
+    )
+
     # remove linux.present
     exec_chroot(
         ['rm', '-rf', '/etc/mkinitcpio.d/linux.preset']
